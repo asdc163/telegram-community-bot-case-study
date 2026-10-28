@@ -1,37 +1,25 @@
-# Telegram Community Bot
+# Telegram community bot
 
-An anonymized commercial engineering case study by Tommy. I used AI-assisted development to build Telegram workflows for community participation, owner management, and service handoff.
+A commercial bot for community activities and moderation. Members participate in their group; owners manage sensitive settings in private messages.
 
-**Public material:** documentation and conceptual diagrams. Commercial source, bot identities, customer groups, and operating data remain private.
+I worked on the product flows and the TypeScript service, including role checks, persistent delivery and transfer to another operator. The stack is Node.js, Fastify, PostgreSQL and Docker.
 
-[繁體中文](README.zh-TW.md) · [Architecture and decisions](docs/architecture.md) · [Verification scope](docs/verification.md) · [Delivery decisions for TPM review](docs/delivery-decisions.md) · [Portfolio](https://github.com/asdc163/ai-builder-portfolio)
+[繁體中文](README.zh-TW.md) · [Architecture](docs/architecture.md) · [Delivery notes](docs/delivery-decisions.md)
 
-## The product problem
+## An open menu can outlive its owner's authority
 
-Members should be able to participate where the community already talks. Sensitive settings belong in the owner's private conversation. A bot also needs to handle stale menus, role changes, repeated updates, and delivery failures without confusing participation with permission to manage.
+The service checks the current group owner when a sensitive action is applied. Keeping an old settings menu does not preserve management rights after a role change. Ordinary members can still participate without going through the owner's interface.
 
-## My work
+## Unknown delivery needs its own state
 
-I worked on product and interaction flows, TypeScript services, role checks, persistent delivery, rule-based moderation, regression work, and owner-transfer packaging. The stack included Node.js, TypeScript, Fastify, PostgreSQL, and Docker.
+A persistent outbox tracks messages through delivery. Rate limits can be deferred. Known failures can be recorded. If a timeout leaves the outcome uncertain, blindly retrying can send the same message twice, so the item stays visible for review.
 
-## What mattered in the implementation
+Moderation also checks roles and message provenance. A familiar-looking name or button is not enough to identify a trusted service message.
 
-Member participation stays in the group. The current group owner manages settings and activities in private messages; sensitive actions recheck the current Telegram role, so an old menu cannot retain authority after ownership changes.
+## Moving the service
 
-Delivery uses persistent state. A rate limit can be deferred, a known failure can be recorded, and an unknown send outcome needs review. Automatically retrying every uncertain result risks a duplicate message.
+I included shutdown, backup, restore and ownership reconciliation in the handoff. Platform ownership and application ownership need to agree before the recipient starts the service. The old runtime must stop first.
 
-Moderation distinguishes current roles and message provenance rather than trusting a bot name or a familiar-looking button. The service also needs the relevant Telegram permissions; it cannot inspect messages Telegram never delivers to it.
+The private records include automated regressions, API role checks, selected Telegram journeys and transfer-package validation. Recipient operation and the remaining device/language checks are listed in [validation notes](docs/verification.md).
 
-For handoff, stopping the old runtime, preserving the encryption material, and checking a restored database matter as much as copying source files. Platform ownership and application ownership must be reconciled separately.
-
-## Recorded delivery state
-
-Private records describe automated regressions, role checks through the Telegram API, selected native Telegram journeys, and transfer-package validation. Some later behavior changes did not receive a fresh client UI walkthrough. These evidence layers are kept separate in [verification scope](docs/verification.md).
-
-The case was reviewed against those records on 2026-10-27. Recipient deployment, all device and language flows, live payment acceptance, and continuous hosting are not established by this publication.
-
-## AI's role
-
-AI assisted the engineering work. The bot behaviors described here are deterministic and rule-based. There is no claim of LLM moderation or an autonomous AI community manager.
-
-This repository has no runnable commercial application or live bot link. See [disclosure boundaries](DISCLOSURE.md).
+Source and client details are private. This case uses generic names and contains no live bot or customer data. Development was AI-assisted; the bot's product behavior is rule-based. [Disclosure](DISCLOSURE.md)
