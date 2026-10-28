@@ -4,7 +4,7 @@ An anonymized commercial engineering case study by Tommy. I used AI-assisted dev
 
 **Public material:** documentation and conceptual diagrams. Commercial source, bot identities, customer groups, and operating data remain private.
 
-[繁體中文](README.zh-TW.md) · [Architecture and decisions](docs/architecture.md) · [Verification scope](docs/verification.md) · [Portfolio](https://github.com/asdc163/ai-builder-portfolio)
+[繁體中文](README.zh-TW.md) · [Architecture and decisions](docs/architecture.md) · [Verification scope](docs/verification.md) · [Delivery decisions for TPM review](docs/delivery-decisions.md) · [Portfolio](https://github.com/asdc163/ai-builder-portfolio)
 
 ## The product problem
 
