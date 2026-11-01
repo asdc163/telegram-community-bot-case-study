@@ -11,4 +11,4 @@ Reviewed for publication: 2026-10-27. Evidence below summarizes historical priva
 
 Not established here: a currently running bot, complete parity with another product, all language and device journeys, physical iOS or Android acceptance, real payments, customer-scale capacity, continuous hosting, adoption, or revenue.
 
-Raw messages, private group names, role identifiers, test counts, logs, screenshots, and transfer-package hashes are intentionally omitted. The public repository is a case study, not a replayable commercial test package.
+Raw messages, private group names, role identifiers, test counts, logs, unredacted screenshots, and transfer-package hashes are intentionally omitted. The public repository is a case study, not a replayable commercial test package.
