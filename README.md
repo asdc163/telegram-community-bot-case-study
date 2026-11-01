@@ -22,7 +22,7 @@ I included shutdown, backup, restore and ownership reconciliation in the handoff
 
 The private records include automated regressions, API role checks, selected Telegram journeys and transfer-package validation. Recipient operation and the remaining device/language checks are listed in [validation notes](docs/verification.md).
 
-Source and client details are private. This case uses generic names and contains no live bot or customer data. Development was AI-assisted; the bot's product behavior is rule-based. [Disclosure](DISCLOSURE.md)
+Source and client details are private. This case uses generic names and contains no live bot or customer data. The bot follows explicit participation and delivery rules. [Disclosure](DISCLOSURE.md)
 
 ## Product screens
 
